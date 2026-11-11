@@ -1,16 +1,13 @@
 # Escuela Politécnica Nacional EPN  
 ## Escuela de Formación de tecnólogos ESFOT  
 ### 🎮 ESFOT RPG: La Batalla de los Reinos
-
 > Estudiante: Melva Patricia Suarez C.   
 > Asignatura: Programación Orientada a Objetos  
 > Lenguaje: Java (JDK 21+)  
 > Modalidad: Individual
 
 ### 📖 Descripción del proyecto
-
 **ESFOT RPG:** La Batalla de los Reinos es un prototipo de juego de rol (RPG) por consola desarrollado en Java puro, sin interfaz gráfica ni base de datos.
-
 El objetivo es poner en práctica los pilares de la Programación Orientada a Objetos mediante un caso real: registrar héroes de distintos tipos, consultarlos, ejecutar habilidades especiales y enfrentarlos en combates por turnos.
 
 **El sistema permite:**
@@ -24,14 +21,14 @@ El objetivo es poner en práctica los pilares de la Programación Orientada a Ob
 
 > Este proyecto fue desarrollado como tarea integradora y demuestra la implementación de:
 
-- Herencia simple, jerárquica y multinivel.
-- Encapsulamiento con setters validados.
-- Constructores con llamada a super(...).
-- Sobrescritura (@Override) y sobrecarga.
-- Polimorfismo mediante referencias Personaje.
-- instanceof y casting seguro para habilidades específicas.
-- Colecciones: ArrayList y HashMap.
-- Menú interactivo con Scanner y manejo de errores.
+- Herencia **simple**, **jerárquica** y **multinivel**.
+- **Encapsulamiento** con setters validados.
+- **Constructores** con llamada a `super(...)`.
+- **Sobrescritura** (`@Override`) y **sobrecarga**.
+- **Polimorfismo** mediante referencias `Personaje`.
+- **`instanceof` y casting seguro** para habilidades específicas.
+- Colecciones: `ArrayList` y `HashMap`.
+- **Menú interactivo** con `Scanner` y control de errores sin excepciones.
 
 ### ⚙️ Requisitos previos
 
@@ -42,28 +39,26 @@ Para ejecutar el proyecto es necesario contar con:
 - (Opcional) IDE como IntelliJ IDEA, Eclipse o VS Code con extensión de Java.
 
 **Para verificar la versión de Java instalada, ejecuta:**
-```azure
-    java -version
 ```
-
+java -version
+```
 ### 🚀 Instrucciones de ejecución
 **1. Clonar el repositorio**
 
-```azure
-    git clone https://github.com/MelvaSuarez29/videojuego-Batalla-Reinos.git  
-    cd esfot-rpg-batalla-reinos
 ```
-**2. Compilar el proyecto** 
-
+git clone https://github.com/MelvaSuarez29/videojuego-Batalla-Reinos.git  
+cd esfot-rpg-batalla-reinos
+```
+**2. Compilar el proyecto**
 Desde la raíz del proyecto, ejecuta:
 
-bash
+```
 javac -d out src/personajes/*.java src/juego/*.java src/Main.java
-
+```
 **3. Ejecutar el juego**  
-    ```
-    java -cp out Main 
-    ```
+```
+java -cp out Main 
+```
 
 **4. (Opcional) Ejecutar desde un IDE**
 
@@ -79,11 +74,11 @@ videojuego_RP/
     ├──juego/
 │   │   └── GestorJuego.java
 │   ├── personajes/
-│   │   ├── Personaje.java
+│   │   ├── Arquero.java
 │   │   ├── Guerrero.java
 │   │   ├── Mago.java
-│   │   ├── Arquero.java
-│   │   └── Paladin.java
+│   │   ├── Paladin.java
+│   │   └── Personaje.java
 │   └── Main.java
 ├── Diagrama_UML/
 │   ├── diagrama_clases.png.
@@ -218,7 +213,23 @@ class Main {
 - Mensajes de error claros al usuario.
 - .gitignore configurado para excluir *.class, out/, archivos de IDE.
 
+## 🧪 Pruebas mínimas realizadas
+
+| # | Prueba | Resultado |
+|---|---|---|
+| 1 | Crear un personaje de cada tipo y mostrar atributos | [ ] Correcto |
+| 2 | Rechazar nombre duplicado y estadística inválida | [ ] Mensajes claros |
+| 3 | Ataque normal y ataque con bonificación | [ ] Daño correcto |
+| 4 | Daño respeta defensa y vida no baja de 0 | [ ] Con `Math.max` |
+| 5 | Hechizo con y sin maná suficiente | [ ] No consume si falla |
+| 6 | Disparar flechas hasta agotarlas | [ ] Bloquea al llegar a 0 |
+| 7 | Curación tope en `vidaMaxima` y escudo del Paladín | [ ] Funciona |
+| 8 | Recorrer `List<Personaje>` con polimorfismo | [ ] Usa versión sobrescrita |
+| 9 | Buscar por nombre con `HashMap` | [ ] Encuentra y valida duplicados |
+| 10 | Combate completo con ganador anunciado | [ ] Termina correctamente |
+
 ---
-*Autora: Melva Suarez*
+***Autora:** Melva Suarez*  
+***Repositorio link:** https://github.com/MelvaSuarez29/videojuego-Batalla-Reinos.git*
 > El siguiente proyecto se lo realizó con fines académicos, como repaso de la materia Porgramación Orientada a Objetos
 > siguiendo las directrices del siguiente repositorio: https://github.com/jzaldumbide/actividad_de_repaso_POO.git
