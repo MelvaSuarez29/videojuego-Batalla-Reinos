@@ -1,4 +1,44 @@
 package personajes;
 
-public class Arquero {
+public class Arquero extends Personaje{
+    private int flechas;
+
+    public Arquero() {}
+
+    public Arquero(String nombre, int nivel, int vida, int vidaMaxima, int ataque, int defensa, int flechas) {
+        super(nombre, nivel, vida, vidaMaxima, ataque, defensa);
+        this.flechas = flechas;
+    }
+
+    public int getFlechas() {return flechas;}
+    public void setFlechas(int flechas) {
+        if(flechas < 0){
+            System.out.println("La cantidad de flechas deben ser mas de cero.");
+        }else{this.flechas = flechas;}
+    }
+
+    public void dispararFlecha(Personaje enemigo){
+        if(!estaVivo()){
+            System.out.println("El personaje "+getNombre()+" fué derrotado, no podrá dispara");
+            return;
+        }
+        if(flechas <= 0){
+            System.out.println("El personaje "+getNombre()+" no cuenta con suficientes flechas");
+            return;
+        }
+        if(enemigo == null || !enemigo.estaVivo() ){
+            System.out.println("El enemigo fue derrotado o no se encuentra disponible");
+            return;
+        } flechas--;
+        System.out.println("El personaje "+getNombre()+" disparo una flecha a "+enemigo.getNombre());
+        enemigo.recibirDanio(getAtaque() + 5);
+    }
+
+    @Override
+    public void mostrarInformacion(){
+        System.out.println("------------------------------------ Arquero -------------------------------");
+        super.mostrarInformacion();
+        System.out.println("Flechas: "+flechas);
+        System.out.println("----------------------------------------------------------------------------");
+    }
 }

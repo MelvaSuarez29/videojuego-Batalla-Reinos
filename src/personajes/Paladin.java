@@ -1,4 +1,4 @@
 package personajes;
 
-public class Paladin {
+public class Paladin extends Personaje {
 }
