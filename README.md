@@ -71,7 +71,7 @@ La organización de archivos y paquetes del proyecto es la siguiente:
 ```
 videojuego_RP/
 ├── src/
-    ├──juego/
+│   ├──juego/
 │   │   └── GestorJuego.java
 │   ├── personajes/
 │   │   ├── Arquero.java
@@ -81,8 +81,7 @@ videojuego_RP/
 │   │   └── Personaje.java
 │   └── Main.java
 ├── Diagrama_UML/
-│   ├── diagrama_clases.png.
-│   └── diagrama_clases.drawio
+│   └── diagrama_clases.png
 ├── README.md
 └── .gitignore
 ```
@@ -202,8 +201,8 @@ class Main {
 -simularCombate() void$
     }
 ```
->Imagen:  
-> Diagrama:
+> Imagen: [Diagrama UML](diagrama_clases.png)
+
 
 ### 🛠️ Tecnologías y buenas prácticas utilizadas
 - Java 17 (compatible con versiones superiores).
