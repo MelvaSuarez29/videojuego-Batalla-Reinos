@@ -8,14 +8,13 @@ public class Personaje {
     private int ataque;
     private int defensa;
 
-    public Personaje (){}
-    public Personaje(String nombre, int nivel, int vida, int vidaMaxima, int ataque, int defensa) {
+    public Personaje(String nombre, int nivel, int vidaMaxima, int ataque, int defensa) {
         setNombre(nombre);
         setNivel(nivel);
-        this.vida = vidaMaxima;
         setVidaMaxima(vidaMaxima);
         setAtaque(ataque);
         setDefensa(defensa);
+        this.vida = vidaMaxima;
     }
 
     public String getNombre() {  return nombre;}

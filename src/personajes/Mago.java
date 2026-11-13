@@ -3,12 +3,13 @@ package personajes;
 public class Mago extends Personaje{
     private int mana;
 
-    public Mago() {}
-    public Mago(String nombre, int nivel, int vida, int vidaMaxima, int ataque, int defensa) {
-        super(nombre, nivel, vida, vidaMaxima, ataque, defensa);
+    public Mago(String nombre, int nivel, int vidaMaxima, int ataque, int defensa) {
+        super(nombre, nivel, vidaMaxima, ataque, defensa);
+        setMana(mana);
     }
 
     public int getMana() {return mana;}
+
     public void setMana(int mana) {
         if(mana < 0){
             System.out.println("El mana no puede ser negativo");

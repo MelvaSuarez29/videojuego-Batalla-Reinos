@@ -4,10 +4,8 @@ public class Paladin extends Personaje {
     private int energiaSagrada;
     private boolean escudoActivo;
 
-    public Paladin() {}
-
-    public Paladin(String nombre, int nivel, int vida, int vidaMaxima, int ataque, int defensa) {
-        super(nombre, nivel, vida, vidaMaxima, ataque, defensa);
+    public Paladin(String nombre, int nivel, int vidaMaxima, int ataque, int defensa) {
+        super(nombre, nivel, vidaMaxima, ataque, defensa);
         setEnergiaSagrada(energiaSagrada);
         this.escudoActivo = false;
     }
