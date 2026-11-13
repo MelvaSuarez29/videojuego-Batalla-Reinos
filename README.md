@@ -86,6 +86,7 @@ videojuego_RP/
 └── .gitignore
 ```
 ## Diagrama UML
+> Imagen: [Diagrama UML](diagrama_clases.png)
 ```mermaid
 classDiagram
     Personaje <|-- Guerrero
@@ -201,9 +202,6 @@ class Main {
 -simularCombate() void$
     }
 ```
-> Imagen: [Diagrama UML](diagrama_clases.png)
-
-
 ### 🛠️ Tecnologías y buenas prácticas utilizadas
 - Java 17 (compatible con versiones superiores).
 - Programación orientada a objetos sin frameworks.

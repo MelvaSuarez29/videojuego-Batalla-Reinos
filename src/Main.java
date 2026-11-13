@@ -54,4 +54,73 @@ public class Main {
         System.out.println("11. Salir");
         System.out.print("Seleccione una opcion: ");
     }
+    public static String pedirNombre(){
+        while(true){
+            System.out.print("Ingrese el nombre: ");
+            String nombre = sc.nextLine();
+            if(!nombre.isEmpty()){
+                return nombre;
+            }else{
+                System.out.println("El campo nombre no puede estar vacio");}
+        }
+    }
+    public static int pedirEntero(String mensaje, int m){
+        while(true){
+            System.out.println(mensaje);
+            if(!sc.hasNextInt()){
+                System.out.println("El valor ingresado no es valido");
+                sc.nextLine();
+                continue;
+            }
+            int valor = sc.nextInt();
+            sc.nextLine();
+            if(valor < m){
+                System.out.println("El valor debe ser mayor o igual a "+m);
+                continue;
+            }
+            return valor;
+        }
+    }
+    private static void pedirPersonaje(String mensaje){
+
+    }
+    private static void crearGuerrero(){
+        System.out.println();
+    }
+    private static void crearMago(){
+        System.out.println();
+    }
+    private static void crearArquero(){
+        System.out.println();
+    }
+    private static void crearPaladin(){
+
+    }
+    private static void buscarPersonaje(){
+
+    }
+    private static void atacarPersonaje(){
+
+    }
+    private static void realizarAtaque(){
+
+    }
+    private static void usarHabilidad(){
+
+    }
+    private static void habilidadMago(){
+
+    }
+    private static void habilidadArquero(){
+
+    }
+    private static void habilidadGuerrero(){
+
+    }
+    private static void habilidadPaladin(){
+
+    }
+    private static void simularCombate(){
+
+    }
 }
