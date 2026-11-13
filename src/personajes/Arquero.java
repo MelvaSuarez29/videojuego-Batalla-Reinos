@@ -13,9 +13,7 @@ public class Arquero extends Personaje {
     public void setFlechas(int flechas) {
         if (flechas < 0) {
             System.out.println("La cantidad de flechas debe ser mayor o igual a cero");
-        } else {
-            this.flechas = flechas;
-        }
+        } else {this.flechas = flechas;}
     }
 
     public void dispararFlecha(Personaje enemigo) {

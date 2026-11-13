@@ -23,17 +23,18 @@ public class Main {
             if(opcion == 11){break;}
 
             switch (opcion){
-                case 1: break;
-                case 2: break;
-                case 3: break;
-                case 4: break;
-                case 5: break;
-                case 6: break;
-                case 7: break;
-                case 8: break;
-                case 9: break;
-                case 10: break;
-                default: break;
+                case 1: crearGuerrero(); break;
+                case 2: crearMago(); break;
+                case 3: crearArquero(); break;
+                case 4: crearPaladin(); break;
+                case 5: gestorJ.mostrarTodos(); break;
+                case 6: buscarPersonaje(); break;
+                case 7: atacarPersonaje(); break;
+                case 8: usarHabilidad(); break;
+                case 9: simularCombate(); break;
+                case 10: gestorJ.mostrarVivos(); break;
+                default:
+                    System.out.println("Ingrese la opción nuevamente"); break;
             }
         }while(true);
     }

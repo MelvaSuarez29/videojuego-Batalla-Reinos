@@ -13,9 +13,7 @@ public class Guerrero extends Personaje {
     public void setFuerza(int fuerza) {
         if (fuerza < 0) {
             System.out.println("El valor de la fuerza debe ser mayor o igual a cero");
-        } else {
-            this.fuerza = fuerza;
-        }
+        } else {this.fuerza = fuerza;}
     }
 
     @Override

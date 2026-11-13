@@ -75,9 +75,7 @@ public class Personaje {
         }
     }
 
-    public boolean estaVivo() {
-        return vida > 0;
-    }
+    public boolean estaVivo() {return vida > 0;}
 
     public void recibirDanio(int cantidad) {
         if (cantidad < 0) {

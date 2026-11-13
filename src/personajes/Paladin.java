@@ -63,9 +63,7 @@ public class Paladin extends Guerrero {
             System.out.println("El escudo de " + getNombre() + " absorbe 5 puntos de daño");
             super.recibirDanio(cantidadReducida);
             escudoActivo = false;
-        } else {
-            super.recibirDanio(cantidad);
-        }
+        } else {super.recibirDanio(cantidad);}
     }
 
     @Override

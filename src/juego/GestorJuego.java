@@ -17,6 +17,7 @@ public class GestorJuego {
     }
 
     public List<Personaje> getPersonajes() { return this.personajes; }
+
     public Map<String, Personaje> getRegistro() { return this.registro; }
 
     public boolean existeNombre(String nombre) {

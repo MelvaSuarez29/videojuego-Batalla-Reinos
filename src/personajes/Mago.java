@@ -13,9 +13,7 @@ public class Mago extends Personaje {
     public void setMana(int mana) {
         if (mana < 0) {
             System.out.println("El maná no puede ser negativo");
-        } else {
-            this.mana = mana;
-        }
+        } else {this.mana = mana;}
     }
 
     public void lanzarHechizo(Personaje enemigo) {
