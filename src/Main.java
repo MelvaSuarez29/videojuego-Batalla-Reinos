@@ -20,6 +20,7 @@ public class Main {
             if(opcion < 1 || opcion > 11){
                 System.out.println(" El valor ingresado no es valido");
                 continue;}
+            if(opcion == 11){break;}
 
             switch (opcion){
                 case 1: break;
@@ -32,7 +33,6 @@ public class Main {
                 case 8: break;
                 case 9: break;
                 case 10: break;
-                case 11: break;
                 default: break;
             }
         }while(true);

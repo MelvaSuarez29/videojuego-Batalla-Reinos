@@ -1,6 +1,6 @@
 package personajes;
 
-public class Arquero extends Personaje{
+public class Arquero extends Personaje {
     private int flechas;
 
     public Arquero(String nombre, int nivel, int vidaMaxima, int ataque, int defensa, int flechas) {
@@ -8,36 +8,39 @@ public class Arquero extends Personaje{
         setFlechas(flechas);
     }
 
-    public int getFlechas() {return flechas;}
+    public int getFlechas() { return flechas; }
 
     public void setFlechas(int flechas) {
-        if(flechas < 0){
-            System.out.println("La cantidad de flechas deben ser mas de cero.");
-        }else{this.flechas = flechas;}
+        if (flechas < 0) {
+            System.out.println("La cantidad de flechas debe ser mayor o igual a cero");
+        } else {
+            this.flechas = flechas;
+        }
     }
 
-    public void dispararFlecha(Personaje enemigo){
-        if(!estaVivo()){
-            System.out.println("El personaje "+getNombre()+" fué derrotado, no podrá dispara");
+    public void dispararFlecha(Personaje enemigo) {
+        if (!estaVivo()) {
+            System.out.println("El personaje " + getNombre() + " fue derrotado y no podrá disparar");
             return;
         }
-        if(flechas <= 0){
-            System.out.println("El personaje "+getNombre()+" no cuenta con suficientes flechas");
+        if (flechas <= 0) {
+            System.out.println("El personaje " + getNombre() + " no cuenta con flechas suficientes");
             return;
         }
-        if(enemigo == null || !enemigo.estaVivo() ){
+        if (enemigo == null || !enemigo.estaVivo()) {
             System.out.println("El enemigo fue derrotado o no se encuentra disponible");
             return;
-        } flechas--;
-        System.out.println("El personaje "+getNombre()+" disparo una flecha a "+enemigo.getNombre());
+        }
+        flechas--;
+        System.out.println("El personaje " + getNombre() + " disparó una flecha a " + enemigo.getNombre());
         enemigo.recibirDanio(getAtaque() + 5);
     }
 
     @Override
-    public void mostrarInformacion(){
+    public void mostrarInformacion() {
         System.out.println("------------------------------------ Arquero -------------------------------");
         super.mostrarInformacion();
-        System.out.println("Flechas: "+flechas);
+        System.out.println("Flechas: " + flechas);
         System.out.println("----------------------------------------------------------------------------");
     }
 }
