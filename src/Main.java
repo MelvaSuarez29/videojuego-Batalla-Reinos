@@ -17,7 +17,7 @@ public class Main {
                 continue;
             }
             if(opcion == 11){
-                System.out.println("Gracias por utilizar le sistema ESFOT RPG - JAVA POO ");
+                System.out.println("Gracias por utilizar el sistema ESFOT RPG - JAVA POO ");
                 System.out.println("Saliendo...............................");
                 break;}
 
@@ -52,12 +52,11 @@ public class Main {
         System.out.println("9. Simular combate por turnos");
         System.out.println("10. Mostrar personajes vivos");
         System.out.println("11. Salir");
-        System.out.print("Seleccione una opcion: ");
     }
     public static String pedirNombre(){
         while(true){
             System.out.print("Ingrese el nombre: ");
-            String nombre = sc.nextLine();
+            String nombre = sc.nextLine().trim();
             if(!nombre.isEmpty()){
                 return nombre;
             }else{
@@ -82,18 +81,18 @@ public class Main {
         }
     }
     private static Personaje pedirPersonaje(String mensaje){
-        System.out.println(mensaje);
+        System.out.print(mensaje);
         return gestorJ.buscarPorNombre(sc.nextLine().trim());
     }
 
     private static void crearGuerrero(){
         System.out.println("-----------------------Crear un Guerrero---------------------");
         String nombre = pedirNombre();
-        int nivel = pedirEntero("Nivel:", 1);
-        int vidaMaxima = pedirEntero("Vida Maxima:", 1);
-        int ataque = pedirEntero("Ataque:", 0);
-        int defensa = pedirEntero("Defensa:", 0);
-        int fuerza = pedirEntero("Fuerza:",0);
+        int nivel = pedirEntero("Nivel: ", 1);
+        int vidaMaxima = pedirEntero("Vida Maxima: ", 1);
+        int ataque = pedirEntero("Ataque: ", 0);
+        int defensa = pedirEntero("Defensa: ", 0);
+        int fuerza = pedirEntero("Fuerza: ",0);
         gestorJ.agregarPersonaje(
                 new Guerrero(nombre,nivel,vidaMaxima,ataque,defensa,fuerza)
         );
@@ -145,9 +144,9 @@ public class Main {
         p.mostrarInformacion();
     }
     private static void atacarPersonaje(){
-        Personaje enemigo = pedirPersonaje("Ingrese el nombre del enemigo: ");
-        if (enemigo == null){
-            System.out.println("El enemigo no fue encontrado");
+        Personaje atacante = pedirPersonaje("Ingrese el nombre del atacante: ");
+        if (atacante == null){
+            System.out.println("El atacante no fue encontrado");
             return;
         }
         Personaje objetivo = pedirPersonaje("Ingrese el nombre del objetivo: ");
@@ -155,56 +154,74 @@ public class Main {
             System.out.println("El objetivo no fue encontrado");
             return;
         }
-        realizarAtaque(enemigo, objetivo);
+        if(atacante == objetivo){
+            System.out.println("Un personaje no puede atacarse a sí mismo");
+            return;
+        }
+        realizarAtaque(atacante, objetivo);
     }
-    private static void realizarAtaque(Personaje enemigo, Personaje objetivo){
-        System.out.println("¿Desea ingresar una bonificación? (s/n): ");
+    private static void realizarAtaque(Personaje atacante, Personaje objetivo){
+        System.out.print("¿Desea ingresar una bonificación? (s/n): ");
         String respuesta = sc.nextLine().trim();
         if(respuesta.equalsIgnoreCase("s")){
             int bonificacion = pedirEntero("Bonificación: ",0);
-            enemigo.atacar(objetivo, bonificacion);
-        }else{enemigo.atacar(objetivo);}
+            atacante.atacar(objetivo, bonificacion);
+        }else{
+            atacante.atacar(objetivo);
+        }
         System.out.println("Vida "+objetivo.getNombre()+": "+objetivo.getVida());
     }
     private static void usarHabilidad(){
         Personaje p = pedirPersonaje("Ingrese el nombre del Personaje: ");
         if(p == null){
-            System.out.println("El peronaje no fue encontrado");
+            System.out.println("El personaje no fue encontrado");
             return;
         }
-        if(p instanceof Arquero){
+        if(p instanceof Mago){
+            habilidadMago((Mago) p);
+        }else if (p instanceof Paladin){
+            habilidadPaladin((Paladin) p);
+        }else if (p instanceof Arquero){
             habilidadArquero((Arquero) p);
         }else if (p instanceof Guerrero){
             habilidadGuerrero((Guerrero) p);
-        }else if (p instanceof Mago){
-            habilidadMago((Mago) p);
-        } else if (p instanceof Paladin) {
-            habilidadPaladin((Paladin) p);
         }else{
             System.out.println("El personaje no posee habilidades especiales");
         }
     }
 
     private static void habilidadArquero(Arquero arquero){
-        Personaje a = pedirPersonaje("Ingrese el nombre del personaje: ");
+        Personaje a = pedirPersonaje("Ingrese el nombre del objetivo: ");
         if(a == null){
-            System.out.println("El personaje no fue encontrado");
+            System.out.println("El objetivo no fue encontrado");
+            return;
+        }
+        if(a == arquero){
+            System.out.println("Un personaje no puede dispararse a sí mismo");
             return;
         }
         arquero.dispararFlecha(a);
     }
-    private static void habilidadGuerrero( Guerrero guerrero){
-        Personaje g = pedirPersonaje("Ingrese el nombre del personaje: ");
+    private static void habilidadGuerrero(Guerrero guerrero){
+        Personaje g = pedirPersonaje("Ingrese el nombre del objetivo: ");
         if(g == null){
-            System.out.println("El personaje no fue encontrado");
+            System.out.println("El objetivo no fue encontrado");
+            return;
+        }
+        if(g == guerrero){
+            System.out.println("Un personaje no puede atacarse a sí mismo");
             return;
         }
         guerrero.atacar(g);
     }
     private static void habilidadMago(Mago mago){
-        Personaje m = pedirPersonaje("Ingrese el nombre del personaje: ");
+        Personaje m = pedirPersonaje("Ingrese el nombre del objetivo: ");
         if(m == null){
-            System.out.println("El personaje no fue encontrado");
+            System.out.println("El objetivo no fue encontrado");
+            return;
+        }
+        if(m == mago){
+            System.out.println("Un personaje no puede lanzarse un hechizo a sí mismo");
             return;
         }
         mago.lanzarHechizo(m);
@@ -213,22 +230,24 @@ public class Main {
         System.out.println("1) Curar \n2. Activar escudo");
         int op = pedirEntero("Ingrese una opción: ",1);
         if(op == 1){
-            Personaje pld = pedirPersonaje("Ingrese el nombre del personaje: ");
+            Personaje pld = pedirPersonaje("Ingrese el nombre del objetivo a curar: ");
             if(pld == null){
-                System.out.println("El personaje no fue encontrado");
+                System.out.println("El objetivo no fue encontrado");
                 return;
             }
             paladin.curar(pld);
         }else if(op == 2){
             paladin.activarEscudo();
-        }else{System.out.println("Opción inválida");}
+        }else{
+            System.out.println("Opción inválida");
+        }
     }
     private static void simularCombate(){
         if(gestorJ.getPersonajes().size() < 2){
             System.out.println("Se necesita al menos 2 personajes registrados");
             return;
         }
-        Personaje a =pedirPersonaje("Nombre del primer combatiente: ");
+        Personaje a = pedirPersonaje("Nombre del primer combatiente: ");
         if(a == null){
             System.out.println("Personaje no fue encontrado");
             return;

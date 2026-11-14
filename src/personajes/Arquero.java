@@ -12,8 +12,9 @@ public class Arquero extends Personaje {
 
     public void setFlechas(int flechas) {
         if (flechas < 0) {
-            System.out.println("La cantidad de flechas debe ser mayor o igual a cero");
-        } else {this.flechas = flechas;}
+            throw new IllegalArgumentException("La cantidad de flechas debe ser mayor o igual a cero");
+        }
+        this.flechas = flechas;
     }
 
     public void dispararFlecha(Personaje enemigo) {
@@ -36,9 +37,7 @@ public class Arquero extends Personaje {
 
     @Override
     public void mostrarInformacion() {
-        System.out.println("------------------------------------ Arquero -------------------------------");
         super.mostrarInformacion();
         System.out.println("Flechas: " + flechas);
-        System.out.println("----------------------------------------------------------------------------");
     }
 }

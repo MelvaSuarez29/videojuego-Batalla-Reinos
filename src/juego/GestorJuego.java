@@ -2,6 +2,7 @@ package juego;
 
 import personajes.Personaje;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,16 +17,19 @@ public class GestorJuego {
         this.registro = new HashMap<>();
     }
 
-    public List<Personaje> getPersonajes() { return this.personajes; }
+    public List<Personaje> getPersonajes() { return Collections.unmodifiableList(personajes); }
 
-    public Map<String, Personaje> getRegistro() { return this.registro; }
+    public Map<String, Personaje> getRegistro() { return Collections.unmodifiableMap(registro); }
 
     public boolean existeNombre(String nombre) {
         return nombre != null && registro.containsKey(nombre.toLowerCase());
     }
 
     public boolean agregarPersonaje(Personaje p) {
-        if (p == null) return false;
+        if (p == null || p.getNombre() == null) {
+            System.out.println("El personaje no es válido para registrar");
+            return false;
+        }
         if (existeNombre(p.getNombre())) {
             System.out.println("Ya existe registrado un personaje con el nombre " + p.getNombre());
             return false;

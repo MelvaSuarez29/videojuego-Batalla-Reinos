@@ -12,8 +12,9 @@ public class Guerrero extends Personaje {
 
     public void setFuerza(int fuerza) {
         if (fuerza < 0) {
-            System.out.println("El valor de la fuerza debe ser mayor o igual a cero");
-        } else {this.fuerza = fuerza;}
+            throw new IllegalArgumentException("El valor de la fuerza debe ser mayor o igual a cero");
+        }
+        this.fuerza = fuerza;
     }
 
     @Override
@@ -23,9 +24,7 @@ public class Guerrero extends Personaje {
 
     @Override
     public void mostrarInformacion() {
-        System.out.println("---------------------------- Guerrero -------------------------------------");
         super.mostrarInformacion();
         System.out.println("Fuerza: " + fuerza);
-        System.out.println("---------------------------------------------------------------------------");
     }
 }

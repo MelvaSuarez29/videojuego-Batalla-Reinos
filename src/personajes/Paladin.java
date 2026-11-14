@@ -16,10 +16,9 @@ public class Paladin extends Guerrero {
 
     public void setEnergiaSagrada(int energiaSagrada) {
         if (energiaSagrada < 0) {
-            System.out.println("La energía sagrada no puede ser menor a cero");
-        } else {
-            this.energiaSagrada = energiaSagrada;
+            throw new IllegalArgumentException("La energía sagrada no puede ser menor a cero");
         }
+        this.energiaSagrada = energiaSagrada;
     }
 
     public void curar(Personaje objetivo) {
@@ -55,23 +54,27 @@ public class Paladin extends Guerrero {
     @Override
     public void recibirDanio(int cantidad) {
         if (cantidad < 0) {
-            System.out.println("El daño no puede ser un valor negativo");
-            return;
+            throw new IllegalArgumentException("El daño no puede ser un valor negativo");
         }
         if (escudoActivo) {
-            int cantidadReducida = Math.max(0, cantidad - 5);
-            System.out.println("El escudo de " + getNombre() + " absorbe 5 puntos de daño");
-            super.recibirDanio(cantidadReducida);
+            int vidaAntes = getVida();
+            super.recibirDanio(cantidad);
+            int danioAplicado = vidaAntes - getVida();
+            int vidaRecuperada = Math.min(5, danioAplicado);
+            if (vidaRecuperada > 0) {
+                setVida(getVida() + vidaRecuperada);
+                System.out.println("El escudo de " + getNombre() + " absorbe " + vidaRecuperada + " punto(s) de daño");
+            }
             escudoActivo = false;
-        } else {super.recibirDanio(cantidad);}
+        } else {
+            super.recibirDanio(cantidad);
+        }
     }
 
     @Override
     public void mostrarInformacion() {
-        System.out.println("------------------------------ Paladín ------------------------------------");
         super.mostrarInformacion();
         System.out.println("Energía sagrada: " + energiaSagrada);
         System.out.println("Escudo activo: " + (escudoActivo ? "Activo" : "Inactivo"));
-        System.out.println("---------------------------------------------------------------------------");
     }
 }
