@@ -42,31 +42,28 @@ Para ejecutar el proyecto es necesario contar con:
 ```
 java -version
 ```
-### 🚀 Instrucciones de ejecución
-**1. Clonar el repositorio**
-
+## 💻 Instrucciones de ejecución
+### 1. Clonar el repositorio
 ```
-git clone https://github.com/MelvaSuarez29/videojuego-Batalla-Reinos.git  
-cd esfot-rpg-batalla-reinos
+git clone https://github.com/MelvaSuarez29/videojuego-Batalla-Reinos.git
 ```
-**2. Compilar el proyecto**
-Desde la raíz del proyecto, ejecuta:
-
+``` 
+cd videojuego-Batalla-Reinos
+```
+### 2. Compilar el proyecto
+- Desde la raíz del proyecto:
 ```
 javac -d out src/personajes/*.java src/juego/*.java src/Main.java
 ```
-**3. Ejecutar el juego**  
+### 3. Ejecutar el juego
 ```
-java -cp out Main 
+java -cp out Main
 ```
-
-**4. (Opcional) Ejecutar desde un IDE**
-
-En la carpeta del proyecto desde:  
-    src/ como carpeta de fuentes y ejecutar la clase Main.
+### 4. Ejecutar desde un IDE
+Abrir la carpeta del proyecto, marcar `src/` como carpeta de fuentes (*Sources Root*) 
+y ejecutar la clase `Main`.
 
 ### 🗂️ Estructura del proyecto
-
 La organización de archivos y paquetes del proyecto es la siguiente:
 ```
 videojuego_RP/
@@ -85,8 +82,19 @@ videojuego_RP/
 ├── README.md
 └── .gitignore
 ```
+### Responsabilidad de cada clase
+
+| Clase | Rol |
+|---|---|
+| `Personaje` | Clase base concreta con atributos comunes, validaciones y sobrecarga de `atacar`. |
+| `Guerrero` | Subclase que añade `fuerza` y sobrescribe `atacar`. |
+| `Mago` | Subclase que añade `mana` y `lanzarHechizo`. |
+| `Arquero` | Subclase que añade `flechas` y `dispararFlecha`. |
+| `Paladin` | Subclase de `Guerrero` (herencia multinivel) con curación y escudo. |
+| `GestorJuego` | Administra `ArrayList` + `HashMap` y la lógica de combate. |
+| `Main` | Controla la interacción por consola (menú, entrada y salida). |
 ## Diagrama UML
-> Imagen: [Diagrama UML](diagrama_clases.png)
+> **Imagen:** [Diagrama Clases PNG](diagrama_clases.png)
 ```mermaid
 classDiagram
     Personaje <|-- Guerrero
@@ -202,13 +210,6 @@ class Main {
 -simularCombate() void$
     }
 ```
-### 🛠️ Tecnologías y buenas prácticas utilizadas
-- Java 17 (compatible con versiones superiores).
-- Programación orientada a objetos sin frameworks.
-- Separación por paquetes: personajes, juego, Main.
-- Validaciones centralizadas en setters.
-- Mensajes de error claros al usuario.
-- .gitignore configurado para excluir *.class, out/, archivos de IDE.
 
 ## 🧪 Pruebas mínimas realizadas
 
@@ -225,6 +226,35 @@ class Main {
 | 9 | Buscar por nombre con `HashMap` | [ ] Encuentra y valida duplicados |
 | 10 | Combate completo con ganador anunciado | [ ] Termina correctamente |
 
+## 🧠 Respuestas a las preguntas de análisis
+
+### 1. ¿Dónde se aplica herencia simple en el proyecto?
+
+### 2. ¿Por qué `Personaje → Guerrero → Paladin` representa herencia multinivel?
+
+### 3. ¿Qué relación ejemplifica herencia jerárquica?
+
+### 4. ¿Cuál es la diferencia entre sobrescritura y sobrecarga de `atacar()`?
+
+### 5. ¿Qué aporta `super` en constructores y métodos?
+
+### 6. ¿Por qué `List<Personaje>` admite guerreros, magos, arqueros y paladines?
+
+### 7. ¿Qué versión de `mostrarInformacion()` se ejecuta al recorrer la lista y por qué?
+
+### 8. ¿Cuándo se necesita `instanceof` antes de hacer casting?
+
+### 9. ¿Qué ventaja aporta `HashMap` para localizar un personaje por nombre?
+
+### 10. ¿Cómo se protege la consistencia de los atributos mediante encapsulamiento?
+
+### 🛠️ Tecnologías utilizadas
+- Java 17 (compatible con versiones superiores).
+- Programación orientada a objetos sin frameworks.
+- Separación por paquetes: personajes, juego, Main.
+- Validaciones centralizadas en setters.
+- Mensajes de error claros al usuario.
+- .gitignore configurado para excluir *.class, out/, archivos de IDE.
 ---
 ***Autora:** Melva Suarez*  
 ***Repositorio link:** https://github.com/MelvaSuarez29/videojuego-Batalla-Reinos.git*
