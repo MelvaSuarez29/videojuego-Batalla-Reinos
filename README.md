@@ -61,13 +61,13 @@ videojuego-Batalla-Reinos/
 │       ├── Mago.java
 │       ├── Arquero.java
 │       └── Paladin.java
-├── Diagrama_UML/
+├── Diagrams/
 │   └── diagrama_clases.png
-├── capturas/
-│   ├── creacion.png
-│   ├── busqueda.png
-│   ├── habilidad.png
-│   └── combate.png
+├── Screenshots/
+│   ├── creacion.jpg
+│   ├── busqueda.jpg
+│   ├── habilidad.jpg
+│   └── combate.jpg
 ├── README.md
 └── .gitignore
 ```
@@ -118,7 +118,7 @@ Abrir la carpeta del proyecto, marcar `src/` como carpeta de fuentes (*Sources R
 
 ##  Diagrama UML
 
-> **Imagen:** [Diagrama de clases](Diagrama_UML/diagrama_clases.png)
+> **Imagen:** [Diagrama de clases](diagrams/diagrama_clases.png)
 
 ```mermaid
 classDiagram
@@ -243,14 +243,14 @@ classDiagram
 
 ## 📸 Capturas de pantalla
 
-Las evidencias de ejecución se almacenan en la carpeta `capturas/`:
+Las evidencias de ejecución se almacenan en la carpeta `Capturas`:
 
 | Archivo | Evidencia |
 |---|---|
-| [creacion.jpg](capturas/creacion.jpg) | Creación de un personaje de cada tipo y visualización de atributos con polimorfismo. |
-| [busqueda.jpg](capturas/busqueda.jpg) | Búsqueda por nombre con `HashMap`, nombre inexistente y rechazo de duplicado. |
-| [habilidad.jpg](capturas/habilidad.jpg) | Hechizo con y sin maná, flechas hasta agotarlas, curación y escudo del Paladín. |
-| [combate.jpg](capturas/combate.jpg) | Combate completo por turnos con daño efectivo, vida restante y ganador. |
+| [creacion.jpg](screenshots/creacion.jpg) | Creación de un personaje de cada tipo y visualización de atributos con polimorfismo. |
+| [busqueda.jpg](screenshots/busqueda.jpg) | Búsqueda por nombre con `HashMap`, nombre inexistente y rechazo de duplicado. |
+| [habilidad.jpg](screenshots/habilidad.jpg) | Hechizo con y sin maná, flechas hasta agotarlas, curación y escudo del Paladín. |
+| [combate.jpg](screenshots/combate.jpg) | Combate completo por turnos con daño efectivo, vida restante y ganador. |
 
 ## 🧪 Pruebas mínimas realizadas
 
