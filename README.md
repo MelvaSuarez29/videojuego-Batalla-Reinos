@@ -304,16 +304,37 @@ public void atacar(Personaje enemigo) {
 }
 ```
 ### 5. ¿Qué aporta `super` en constructores y métodos?
+En los constructores, **super()** inicializa primero la parte heredada del objeto antes de los atributos propios.  
+En los métodos, `super.mostrarInformacion()` imprime los datos generales y específicos; en `super.atacar(...)` permiten reutilizar la lógica base.   
+**super** permite reutilizar el comportamiento de la clase principal sin duplicar código.
 
-### 6. ¿Por qué `List<Personaje>` admite guerreros, magos, arqueros y paladines?
-
+### 6. ¿Por qué `List<Personaje>` admite guerreros, magos, arqueros y paladines?  
+Por que todos son subtipos de la clase **Personaje**, al hacer una referencia del tipo padre puede apuntar a un objeto de cualquier subclase sin necesidad de casting.  
+Es la base de **polimorfismo**, recorre la lista he invocar alos métodos sin conocer el tipo concreto de cada elemento.  
+```
+List<Personaje> personajes = new ArrayList<>();
+personajes.add(new Guerrero(...));  
+personajes.add(new Mago(...));       
+personajes.add(new Arquero(...));   
+personajes.add(new Paladin(...));    
+```
 ### 7. ¿Qué versión de `mostrarInformacion()` se ejecuta al recorrer la lista y por qué?
+Se ejecuta la versión sobrescrita en la clase real del objeto (Guerrero, Mago, Arquero o Paladin), no la de `Personaje`. 
+Esto ocurre porque los métodos de instancia usan enlace dinámico: aunque la referencia sea de tipo `Personaje`, la JVM busca la implementación según el objeto que realmente está almacenado.  
 
-### 8. ¿Cuándo se necesita `instanceof` antes de hacer casting?
+### 8. ¿Cuándo se necesita `instanceof` antes de hacer casting?  
+Cuando se tiene una referencia de tipo padre y se necesita acceder a un atributo o método que solo existe en el subtipo, como `lanzarHechizo`, `dispararFlecha`, `curar` o `activarEscudo`.
+Antes de hacer el casting se debe verificar con instanceof que el objeto realmente es de ese tipo; de lo contrario, en tiempo de ejecución obtendría un ClassCastException.  
 
 ### 9. ¿Qué ventaja aporta `HashMap` para localizar un personaje por nombre?
+Permite localizar un valor mediante su clave con un costo promedio constante, sin recorrer toda la lista.
+El HashMap guarda pares clave → valor. En mi proyecto la clave es el nombre normalizado (nombre.toLowerCase()) y el valor es el objeto Personaje. 
+Al llamar a registro.get("thor"), Java calcula el hashCode de "thor", lo convierte en un índice interno y accede directamente al objeto sin recorrer la colección.  
 
 ### 10. ¿Cómo se protege la consistencia de los atributos mediante encapsulamiento?
+Los atributos son `private`, por lo que no se pueden modificar directamente desde fuera de la clase. 
+El acceso se realiza mediante getters y setters, y los setters validan los valores: nombre no vacío, nivel mayor que cero, vida máxima positiva, ataque y defensa no negativos, vida y vidaMaxima. 
+Las operaciones internas, también respetan esas reglas, evitando estados inválidos.
 
 ## 🛠️ Tecnologías utilizadas
 
