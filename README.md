@@ -118,7 +118,7 @@ Abrir la carpeta del proyecto, marcar `src/` como carpeta de fuentes (*Sources R
 
 ##  Diagrama UML
 
-> **Imagen:** [Diagrama de clases](diagram/diagrama_clases.png)
+> **Imagen:** [Diagrama de clases](uml/diagrama_clases.png)
 
 ```mermaid
 classDiagram
