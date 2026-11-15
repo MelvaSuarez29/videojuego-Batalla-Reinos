@@ -32,15 +32,13 @@ public class Main {
                 case 8: usarHabilidad(); break;
                 case 9: simularCombate(); break;
                 case 10: gestorJ.mostrarVivos(); break;
-                default:
-                    System.out.println("Ingrese la opción nuevamente"); break;
             }
         }while(true);
     }
     public static void mostrarMenu(){
         System.out.println("\n=======================================================");
         System.out.println("               ESFOT RPG - JAVA POO                      ");
-        System.out.println("=========================================================");
+        System.out.println("=======================================================");
         System.out.println("1. Crear Guerrero");
         System.out.println("2. Crear Mago");
         System.out.println("3. Crear Arquero");
@@ -86,7 +84,7 @@ public class Main {
     }
 
     private static void crearGuerrero(){
-        System.out.println("-----------------------Crear un Guerrero---------------------");
+        System.out.println("----------------------- CREAR GUERRERO ---------------------");
         String nombre = pedirNombre();
         int nivel = pedirEntero("Nivel: ", 1);
         int vidaMaxima = pedirEntero("Vida Maxima: ", 1);
@@ -98,7 +96,7 @@ public class Main {
         );
     }
     private static void crearMago(){
-        System.out.println("----------------------Crear un Mago--------------------------");
+        System.out.println("---------------------- CREAR MAGO --------------------------");
         String nombre = pedirNombre();
         int nivel = pedirEntero("Nivel: ", 1);
         int vidaMaxima = pedirEntero("Vida Maxima: ", 1);
@@ -110,7 +108,7 @@ public class Main {
         );
     }
     private static void crearArquero(){
-        System.out.println("----------------------Crear un Arquero-----------------------");
+        System.out.println("---------------------- CREAR ARQUERO -----------------------");
         String nombre = pedirNombre();
         int nivel = pedirEntero("Nivel: ", 1);
         int vidaMaxima = pedirEntero("Vida Maxima: ",1);
@@ -122,7 +120,7 @@ public class Main {
         );
     }
     private static void crearPaladin(){
-        System.out.println("----------------------Crear un Paladin-----------------------");
+        System.out.println("---------------------- CREAR PALADÍN -----------------------");
         String nombre = pedirNombre();
         int nivel = pedirEntero("Nivel: ", 1);
         int vidaMaxima = pedirEntero("Vida Maxima: ",1);
@@ -135,7 +133,7 @@ public class Main {
         );
     }
     private static void buscarPersonaje(){
-        System.out.println("----------------------Buscar personaje por nombre-----------------------");
+        System.out.println("-------------- BUSCAR PERSONAJE POR NOMBRE ----------------");
         Personaje p = pedirPersonaje("Ingrese el nombre del Personaje: ");
         if(p == null){
             System.out.println("No se encontro algún personaje con ese nombre");

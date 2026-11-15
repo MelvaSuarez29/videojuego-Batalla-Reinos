@@ -37,6 +37,7 @@ public class Arquero extends Personaje {
 
     @Override
     public void mostrarInformacion() {
+        System.out.println("-------------------- ARQUERO --------------------");
         super.mostrarInformacion();
         System.out.println("Flechas: " + flechas);
     }

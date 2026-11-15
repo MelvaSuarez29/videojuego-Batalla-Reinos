@@ -4,8 +4,7 @@ public class Paladin extends Guerrero {
     private int energiaSagrada;
     private boolean escudoActivo;
 
-    public Paladin(String nombre, int nivel, int vidaMaxima, int ataque, int defensa,
-                   int fuerza, int energiaSagrada) {
+    public Paladin(String nombre, int nivel, int vidaMaxima, int ataque, int defensa, int fuerza, int energiaSagrada) {
         super(nombre, nivel, vidaMaxima, ataque, defensa, fuerza);
         setEnergiaSagrada(energiaSagrada);
         this.escudoActivo = false;
@@ -34,6 +33,10 @@ public class Paladin extends Guerrero {
             System.out.println("El objetivo fue derrotado o no se encuentra disponible");
             return;
         }
+        if (objetivo.getVida() >= objetivo.getVidaMaxima()) {
+            System.out.println("El objetivo ya tiene la vida al máximo, no se consume energía");
+            return;
+        }
         energiaSagrada -= 10;
         int vidaAntes = objetivo.getVida();
         int vidaNueva = Math.min(objetivo.getVidaMaxima(), vidaAntes + 20);
@@ -57,15 +60,14 @@ public class Paladin extends Guerrero {
             throw new IllegalArgumentException("El daño no puede ser un valor negativo");
         }
         if (escudoActivo) {
-            int vidaAntes = getVida();
-            super.recibirDanio(cantidad);
-            int danioAplicado = vidaAntes - getVida();
-            int vidaRecuperada = Math.min(5, danioAplicado);
-            if (vidaRecuperada > 0) {
-                setVida(getVida() + vidaRecuperada);
-                System.out.println("El escudo de " + getNombre() + " absorbe " + vidaRecuperada + " punto(s) de daño");
-            }
             escudoActivo = false;
+            int danioReal = Math.max(1, cantidad - getDefensa());
+            if (danioReal <= 5) {
+                System.out.println("El escudo de " + getNombre() + " absorbe " + danioReal + " punto(s) de daño");
+            } else {
+                System.out.println("El escudo de " + getNombre() + " absorbe 5 punto(s) de daño");
+                super.recibirDanio(cantidad - 5);
+            }
         } else {
             super.recibirDanio(cantidad);
         }
@@ -73,8 +75,10 @@ public class Paladin extends Guerrero {
 
     @Override
     public void mostrarInformacion() {
+        System.out.println("-------------------- PALADÍN ------------------------ ");
         super.mostrarInformacion();
         System.out.println("Energía sagrada: " + energiaSagrada);
         System.out.println("Escudo activo: " + (escudoActivo ? "Activo" : "Inactivo"));
+
     }
 }

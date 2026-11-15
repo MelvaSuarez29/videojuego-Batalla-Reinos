@@ -24,7 +24,7 @@ public class Personaje {
     public int getAtaque() { return ataque; }
     public int getDefensa() { return defensa; }
 
-    protected void setNombre(String nombre) {
+    public void setNombre(String nombre) {
         if (nombre == null || nombre.trim().isEmpty()) {
             throw new IllegalArgumentException("El nombre no puede estar vacío");
         }
@@ -85,7 +85,8 @@ public class Personaje {
 
     public void atacar(Personaje enemigo, int bonificacion) {
         if (bonificacion < 0) {
-            throw new IllegalArgumentException("La bonificación es inválida");
+            System.out.println("La bonificación no puede ser negativa");
+            return;
         }
         if (!estaVivo()) {
             System.out.println("El personaje " + nombre + " fue derrotado y no puede atacar");
@@ -99,7 +100,7 @@ public class Personaje {
     }
 
     public void mostrarInformacion() {
-        System.out.println("------------------------------ INFORMACIÓN DEL PERSONAJE ------------------------------------");
+        System.out.println("INFORMACIÓN DEL PERSONAJE  ");
         System.out.println("Nombre: " + nombre);
         System.out.println("Nivel: " + nivel);
         System.out.println("Vida: " + vida);

@@ -37,6 +37,7 @@ public class Mago extends Personaje {
 
     @Override
     public void mostrarInformacion() {
+        System.out.println("---------------------------- MAGO ----------------------------");
         super.mostrarInformacion();
         System.out.println("Maná: " + mana);
     }

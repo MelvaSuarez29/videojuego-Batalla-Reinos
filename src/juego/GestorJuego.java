@@ -50,20 +50,18 @@ public class GestorJuego {
             System.out.println("No existen personajes registrados");
             return;
         }
-        System.out.println("-----------------Personajes Registrados---------------------");
+        System.out.println("----------------- PERSONAJES REGISTRADOS ---------------------");
         for (Personaje p : personajes) {
             p.mostrarInformacion();
-            System.out.println("--------------------------------------------------------");
         }
     }
 
     public void mostrarVivos() {
-        System.out.println("----------------------Personajes Vivos----------------------");
+        System.out.println("-------------------- PERSONAJES VIVOS ----------------------");
         boolean vivos = false;
         for (Personaje p : personajes) {
             if (p.estaVivo()) {
                 p.mostrarInformacion();
-                System.out.println("----------------------------------------------------");
                 vivos = true;
             }
         }

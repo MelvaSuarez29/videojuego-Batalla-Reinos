@@ -24,6 +24,7 @@ public class Guerrero extends Personaje {
 
     @Override
     public void mostrarInformacion() {
+        System.out.println("-------------------------- GUERRERO --------------------------");
         super.mostrarInformacion();
         System.out.println("Fuerza: " + fuerza);
     }
