@@ -2,9 +2,9 @@
 ## Escuela de Formación de Tecnólogos ESFOT
 ### 🎮 ESFOT RPG: La Batalla de los Reinos
 
-> Estudiante: Melva Patricia Suarez C.
-> Asignatura: Programación Orientada a Objetos
-> Lenguaje: Java (JDK 21 o superior)
+> Estudiante: Melva Patricia Suarez C.  
+> Asignatura: Programación Orientada a Objetos   
+> Lenguaje: Java (JDK 21 o superior)  
 > Modalidad: Individual
 
 ## 📖 Descripción del proyecto
@@ -33,7 +33,7 @@ El proyecto demuestra la implementación de:
 
 > Alcance respetado: no se utilizan interfaces, clases abstractas ni patrones de diseño.
 
-## ⚙️ Requisitos previos
+## 📌 Requisitos previos
 
 Para ejecutar el proyecto es necesario contar con:
 
@@ -49,27 +49,28 @@ java -version
 
 ## 🗂️ Estructura del proyecto
 
-```
-videojuego-Batalla-Reinos/
+La organización de archivos y paquetes del proyecto es la siguiente:
+
+```text
+videojuego_RP/
+├── screenshots/
+│   ├── busqueda.jpg
+│   ├── combate.jpg
+│   ├── creacion.jpg
+│   └── habilidad.jpg
 ├── src/
-│   ├── Main.java
 │   ├── juego/
 │   │   └── GestorJuego.java
-│   └── personajes/
-│       ├── Personaje.java
-│       ├── Guerrero.java
-│       ├── Mago.java
-│       ├── Arquero.java
-│       └── Paladin.java
-├── Diagrams/
-│   └── diagrama_clases.png
-├── Screenshots/
-│   ├── creacion.jpg
-│   ├── busqueda.jpg
-│   ├── habilidad.jpg
-│   └── combate.jpg
-├── README.md
-└── .gitignore
+│   ├── personajes/
+│   │   ├── Arquero.java
+│   │   ├── Guerrero.java
+│   │   ├── Mago.java
+│   │   ├── Paladin.java
+│   │   └── Personaje.java
+│   └── Main.java
+├── diagrama_clases.png
+├── .gitignore
+└── README.md
 ```
 
 La organización por paquetes (`personajes`, `juego` y `Main`) es equivalente a la estructura sugerida: `Main` controla la consola y `GestorJuego` administra las colecciones y los combates.
@@ -118,7 +119,7 @@ Abrir la carpeta del proyecto, marcar `src/` como carpeta de fuentes (*Sources R
 
 ##  Diagrama UML
 
-> **Imagen:** [Diagrama de clases](uml/diagrama_clases.png)
+> **Imagen:** [Diagrama de clases](diagrama_clases.png)
 
 ```mermaid
 classDiagram
@@ -241,9 +242,9 @@ classDiagram
     }
 ```
 
-## 📸 Capturas de pantalla
+## 📸 Capturas de pantalla / Screenshots
 
-Las evidencias de ejecución se almacenan en la carpeta `Capturas`:
+Las evidencias de ejecución se almacenan en la carpeta `Screenshots`:
 
 | Archivo | Evidencia |
 |---|---|
@@ -270,13 +271,38 @@ Las evidencias de ejecución se almacenan en la carpeta `Capturas`:
 ## 🧠 Respuestas a las preguntas de análisis
 
 ### 1. ¿Dónde se aplica herencia simple en el proyecto?
+En las subclases, heredan directamente de la clase principal o padre **Personaje** heredando de una sola clase todos sus atributos y métodos.
+La clase **Personaje** hereda a las subclases `Arquero,Guerrero,Pago` aplicando en cada clase `extends`. Por ejemplo: 
+- Arquero `extends` Personaje
+- Guerrero `extends` Personaje
+- Mago `extends` Personaje
 
 ### 2. ¿Por qué `Personaje → Guerrero → Paladin` representa herencia multinivel?
+Por que se crea dos niveles consecutivos de herencia
+- **Nivel 1:** Guerrero `extends` Personaje
+- **Nivel 2:** Paladin `extends` Guerrero   
+La clase **Paladin** recibe de forma indirecta los atributos y métodos de la clase padre **Personaje** y 
+de forma directa de la subclase **Guerrero**. Por lo cual un Paladin es un Guerrero y también es un Personaje. 
 
 ### 3. ¿Qué relación ejemplifica herencia jerárquica?
+La relación entre Personaje y sus hijos directos Guerrero, Mago y Arquero. 
+Tres clases distintas heredan del mismo padre porque todas representan personajes del juego, formando una jerarquía en forma de árbol.
 
 ### 4. ¿Cuál es la diferencia entre sobrescritura y sobrecarga de `atacar()`?
-
+**Sobrecarga** (overload): dos métodos con el mismo nombre pero distinta firma dentro de la misma clase.  
+- `Guerrero` redefine `atacar(Personaje)` con la misma firma que el padre y usa `@Override` para añadir la fuerza.  
+```
+public void atacar(Personaje enemigo) { ... }                    
+public void atacar(Personaje enemigo, int bonificacion) { ... }  
+```
+**Sobrescritura** (override): una clase hija redefine un método que ya existe en el padre con la misma firma (mismo nombre, mismos parámetros, mismo tipo de retorno).  
+- `Personaje` declara `atacar(Personaje)` y `atacar(Personaje, int)`, es decir, el mismo nombre con distintos parámetros.
+```
+@Override
+public void atacar(Personaje enemigo) {
+    super.atacar(enemigo, fuerza);
+}
+```
 ### 5. ¿Qué aporta `super` en constructores y métodos?
 
 ### 6. ¿Por qué `List<Personaje>` admite guerreros, magos, arqueros y paladines?
@@ -300,7 +326,7 @@ Las evidencias de ejecución se almacenan en la carpeta `Capturas`:
 
 ---
 
-***Autora:** Melva Suarez*
+***Autora:** Melva Suarez*  
 ***Repositorio:** https://github.com/MelvaSuarez29/videojuego-Batalla-Reinos.git*
 
 > Este proyecto se realizó con fines académicos como repaso de la asignatura Programación Orientada a Objetos, siguiendo las directrices del repositorio: https://github.com/jzaldumbide/actividad_de_repaso_POO.git
