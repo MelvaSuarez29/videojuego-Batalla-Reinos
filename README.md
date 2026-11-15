@@ -247,10 +247,10 @@ Las evidencias de ejecución se almacenan en la carpeta `capturas/`:
 
 | Archivo | Evidencia |
 |---|---|
-| [`creacion.png`](capturas/creacion.png) | Creación de un personaje de cada tipo y visualización de atributos con polimorfismo. |
-| [`busqueda.png`](capturas/busqueda.png) | Búsqueda por nombre con `HashMap`, nombre inexistente y rechazo de duplicado. |
-| [`habilidad.png`](capturas/habilidad.png) | Hechizo con y sin maná, flechas hasta agotarlas, curación y escudo del Paladín. |
-| [`combate.png`](capturas/combate.png) | Combate completo por turnos con daño efectivo, vida restante y ganador. |
+| [creacion.jpg](capturas/creacion.jpg) | Creación de un personaje de cada tipo y visualización de atributos con polimorfismo. |
+| [busqueda.jpg](capturas/busqueda.jpg) | Búsqueda por nombre con `HashMap`, nombre inexistente y rechazo de duplicado. |
+| [habilidad.jpg](capturas/habilidad.jpg) | Hechizo con y sin maná, flechas hasta agotarlas, curación y escudo del Paladín. |
+| [combate.jpg](capturas/combate.jpg) | Combate completo por turnos con daño efectivo, vida restante y ganador. |
 
 ## 🧪 Pruebas mínimas realizadas
 
